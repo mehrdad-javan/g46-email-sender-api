@@ -22,10 +22,10 @@ public class EmailController {
   }
 
   @PostMapping
-  public ResponseEntity<String> doSendEmail(@RequestBody @Valid EmailDTO dto) {
+  public ResponseEntity<Void> doSendEmail(@RequestBody @Valid EmailDTO dto) {
     System.out.println("DTO:" + dto);
-    String response = emailService.sendEmail(dto);
-    return ResponseEntity.ok().body(response);
+    emailService.sendEmail(dto);
+    return ResponseEntity.noContent().build();
   }
 
 
